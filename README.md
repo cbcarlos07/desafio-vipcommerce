@@ -10,8 +10,6 @@
 ## [8. Sequelize](#sequelize)
 ## [9. Testes Unitários](#test)
 ## [10. Testes Rest](#rest)
-## [11. Segurança](#seg)
-## [12. Open API](#open)
 
 
 ## <a id="intro">1. Introdução
@@ -154,37 +152,14 @@ Para executar os testes, basta dar o comando na raiz do projeto
 
 ## <a id="rest"> 10. Testes Rest    
 
-Para o teste de API foi usada a ferramenta [Insomnia](https://insomnia.rest/download/)
+Para o teste de API foi usada a ferramenta [Postman](https://www.postman.com/)
 
-Na pasta [rest](https://github.com/cbcarlos07/desafio-api/tree/master/rest) deste projeto tem o arquivo com os testes
+Na pasta [rest](https://github.com/cbcarlos07/desafio-vipcommerce/tree/master/rest) deste projeto tem o arquivo com os testes
 
 Basta importar dentro da ferramenta o arquivo `json` e as requisiçoes estão prontas
 
 Execução dos testes é baseado no banco de dados de teste.
 
-Na pasta [er](https://github.com/cbcarlos07/desafio-api/tree/master/src/config/db/er) encontra-se o arquivo com a base de dados de teste
+Na pasta [er](https://github.com/cbcarlos07/desafio-vipcommerce/tree/master/src/config/db/ddl) encontra-se o arquivo com a base de dados de teste
 
 [Voltar ao inicio](#begin)
-
-## <a id="seg"> 10. Segurança
-
-O tipo de criptografia usada no projeto para codificar a senha é a do pacote [md5](https://www.npmjs.com/package/md5)
-
-Espera-se que a senha já senha criptografa a partir do frontend, para em caso de interceptação, a mesma não seja descoberta
-
-[Voltar ao inicio](#begin)
-
-## <a id="open" >11. OpenAPI
-
-A documentação foi feita baseada apenas em algumas rotas do módulo produto
-
-Para acessar é preciso digitar na url o seguinte endereço
-
-        http://localhost:3334/api-docs/
-
-Segue token de exemplo para liberação da rota
-
-
-![alt text](https://github.com/cbcarlos07/desafio-api/blob/master/src/openapi/openapi.JPG)
-
-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwibm9tZSI6Ikdpc2VseSBCcml0byIsImVtYWlsIjoiZ3lzYUBtYWlsLmNvbSIsInRlbGVmb25lIjoiOTI5ODg4ODg4ODgiLCJlbmRlcmVjbyI6IlIuIExhZ29yYSBBenVsLCAyNSIsImlhdCI6MTYwNDA1ODM2Nn0._eMgRw9lsTsTI9mBawLYzvnJfqZGfp7FaHfBMQ74JF4
