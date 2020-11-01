@@ -13,8 +13,8 @@ module.exports = {
         HOST: 'smtp.mailtrap.io',
         PORT: 587,
         SECURE: true,
-        USER: 'd56da3db720689',
-        PASS: '8a39a6ea2ecb35'
+        USER: 'user-system',
+        PASS: 'password'
     },
     JWT_SECRET: 'produto'    
     
