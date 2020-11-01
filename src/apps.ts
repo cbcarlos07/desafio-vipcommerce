@@ -1,21 +1,20 @@
-import express from 'express'
+import * as restify from 'restify'
 import bodyParser from 'body-parser'
-import cors from 'cors';
+
 import routerConfig from './routers'
-import jwtMiddleware from './utils/jwt';
-import * as swaggerUi from 'swagger-ui-express'
+
 const environments = require('./config/environments')
-import { swaggerDocument } from './openapi/swagger'
-import CargoModel from './config/db/models/cargo.model';
+import CargoModel from './config/db/models/forma-pagamento.model';
 import GenericService from './api/services/generic.service';
+import cors from './utils/cors';
 
 class Application{
-    app: express.Application
+    app: any
     port: any
     connection: any
 
     constructor(){
-        this.app = express()
+        this.app = restify.createServer()
         this.port = environments.SERVER_PORT
         this.connection = new GenericService( CargoModel )
     }
@@ -31,8 +30,7 @@ class Application{
         this.connection
             .testConnection()
             .then(() => {
-                this.enableCors()
-                this.security()
+                this.configCors()                
                 this.routes(  )
                 this.app.listen( this.port, () =>{
                     console.log(`Api rodando da porta ${this.port}`);
@@ -42,23 +40,13 @@ class Application{
             })
     }
 
-    enableCors(){
-
-        const options: cors.CorsOptions = {
-            methods: 'GET, OPTIONS, POST, PUT, DELETE',
-            origin: '*'
-        }
-
-        this.app.use(cors(options));
-
+    configCors(){
+        this.app.pre( cors.preflight )
+        this.app.use( cors.actual )
+        this.app.use( bodyParser.json() )
+        this.app.use( bodyParser.urlencoded({extended: true}) )
     }
 
-    security(){
-        const blocks = [
-            
-        ]
-        this.app.use( jwtMiddleware( { blocks } ) )
-    }
 
 
     routes(  ){
@@ -66,7 +54,7 @@ class Application{
             app: this.app
             
         }
-        this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+        //this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         routerConfig( deps )
     }
 }

@@ -1,16 +1,15 @@
 import { DataTypes} from 'sequelize'
 import { Model } from 'sequelize-typescript'
-class UsuarioModel extends Model {
+class ClienteModel extends Model {
 
     static init( sequelize ){
         super.init({
             nome: DataTypes.STRING,
+            cpf: DataTypes.STRING,
+            sexo: DataTypes.CHAR(1),
             email: DataTypes.STRING,
-            senha: DataTypes.STRING,
-            cargo_id: DataTypes.INTEGER,
-            departamento_id: DataTypes.INTEGER,
         }, { 
-            tableName: 'usuario',
+            tableName: 'cliente',
             sequelize 
         })
     }
@@ -21,4 +20,4 @@ class UsuarioModel extends Model {
 
 
 
-export default UsuarioModel
+export default ClienteModel

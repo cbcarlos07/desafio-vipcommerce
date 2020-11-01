@@ -1,12 +1,12 @@
 import { DataTypes} from 'sequelize'
 import { Model } from 'sequelize-typescript'
-class CargoModel extends Model {
+class FormaPagamentoModel extends Model {
 
     static init( sequelize ){
         super.init({
             nome: DataTypes.STRING           
         }, { 
-            tableName: 'cargo',
+            tableName: 'forma_pagamento',
             sequelize 
         })
     }
@@ -17,4 +17,4 @@ class CargoModel extends Model {
 
 
 
-export default CargoModel
+export default FormaPagamentoModel

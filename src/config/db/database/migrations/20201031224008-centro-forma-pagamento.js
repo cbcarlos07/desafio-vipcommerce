@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     
-      return queryInterface.createTable('cargo', 
+      return queryInterface.createTable('forma_pagamento', 
         { 
           id: {
             type: Sequelize.INTEGER,
@@ -15,7 +15,7 @@ module.exports = {
           nome: {
             type: Sequelize.STRING( 100 ),
             allowNull: false,
-            comment: 'Nome do Cargo'
+            comment: 'Nome da forma de pagamento'
           },          
           
         }
@@ -25,7 +25,7 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     
-      return queryInterface.dropTable('cargo');
+      return queryInterface.dropTable('forma_pagamento');
     
   }
 };
